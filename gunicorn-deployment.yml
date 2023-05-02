@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-dev-deployment
+  namespace: sjb-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: back
+  template:
+    metadata:
+      labels:
+        type: back
+    spec:
+      containers:
+      - name: container
+        image: ddarahakit2023/back:latest
+        ports:
+        - containerPort: 8000
