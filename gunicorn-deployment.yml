@@ -16,5 +16,9 @@ spec:
       containers:
       - name: container
         image: ddarahakit2023/back:latest
+        command: ["/bin/sh", "-ec", "python manage.py migrate && gunicorn config.wsgi --bind 0.0.0.0:8000"]
+        envFrom:
+          - configMapRef:
+              name: backend-cm
         ports:
         - containerPort: 8000
